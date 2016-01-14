@@ -40,8 +40,10 @@ object Main {
     println( "Ex. 3.11: " + ex311 )
 
     val ex312 = List.reverse( list1 )
-    println( "Ex. 3.12: " + List.toString( list1 ) )
     println( "Ex. 3.12: " + List.toString( ex312 ) )
+
+    val ex313 = List.foldLeft3( list1, 1.0 )( _ * _ )
+    println( "Ex. 3.12: " + ex313 )
   }
 
 }

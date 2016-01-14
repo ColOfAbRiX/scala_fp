@@ -92,12 +92,31 @@ object List {
 
   // --- Excercise 3.11 --- //
 
-  def sum3( ns: List[Int] ) = foldLeft( ns, 0 )( _ + _ )
+  def sum3( ns: List[Int] ): Int = foldLeft( ns, 0 )( _ + _ )
 
-  def product3( ds: List[Double] ) = foldLeft( ds, 1.0 )( _ * _ )
+  def product3( ds: List[Double] ): Double = foldLeft( ds, 1.0 )( _ * _ )
 
   def length2[A]( as: List[A] ): Int = foldLeft( as, 0 )( ( _, c ) => c + 1 )
 
   // --- Excercise 3.12 --- //
-  def reverse[A]( as: List[A] ) = foldLeft( as, Nil: List[A] )( (x, xs) => Cons(x, xs) )
+
+  // Tail-recursive
+  def reverse[A]( as: List[A] ): List[A] = {
+    @tailrec
+    def loop( as: List[A], acc: List[A] ): List[A] = as match {
+      case Nil => acc
+      case Cons( x, xs ) => loop( xs, Cons(x, acc) )
+    }
+
+    loop( as, Nil )
+  }
+
+  // Using foldLeft
+  def reverse2[A]( as: List[A] ): List[A] = foldLeft( as, Nil: List[A] )( (x, xs) => Cons(x, xs) )
+
+  // --- Excercise 3.13 --- //
+
+  // It works but it's probably cheating and also less efficient
+  def foldLeft2[A, B]( as: List[A], z: B )( f: (A, B) => B ): B = foldRight( List.reverse(as), z )(f)
+  def foldRight2[A, B]( as: List[A], z: B )( f: (A, B) => B ): B = foldLeft( List.reverse(as), z )(f)
 }
