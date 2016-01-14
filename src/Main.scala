@@ -14,6 +14,7 @@ object Main {
     val list1 = Cons( 4, Cons( 3, Cons( 2, Cons( 1, Nil ) ) ) )
     val list2 = Cons( 1, Nil )
     val list3 = Nil
+    val list4 = Cons( 4.0, Cons( 3.0, Cons( 2.0, Cons( 1.0, Nil ) ) ) )
 
     val ex32 = List.tail( list1 )
     println( "Ex. 3.2: " + List.toString( ex32 ) )
@@ -51,6 +52,12 @@ object Main {
     val list315= Cons( list1, Cons(list2, Cons( list1, Nil ) ) )
     val ex315 = List.concatenate( list315 )
     println( "Ex. 3.15: " + List.toString(ex315) )
+
+    val ex316 = List.add1( list1 )
+    println( "Ex. 3.16: " + List.toString(ex316) )
+
+    val ex317 = List.doubleToString( list4 )
+    println( "Ex. 3.17: " + List.toString(ex317) )
   }
 
 }

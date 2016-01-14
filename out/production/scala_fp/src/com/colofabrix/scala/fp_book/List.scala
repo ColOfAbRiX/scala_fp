@@ -129,4 +129,10 @@ object List {
     case Cons( x, Nil ) => x
     case Cons( x, xs ) => foldRight( x, concatenate(xs) )( Cons(_, _) )
   }
+
+  // --- Excercise 3.16 --- //
+  def add1( is: List[Int] ): List[Int] = foldLeft( is, Nil: List[Int] )( (x, xs) => Cons( x + 1, xs) )
+
+  // --- Excercise 3.17 --- //
+  def doubleToString( ds: List[Double] ): List[Double] = foldLeft( ds, Nil: List[Double] )( (x, xs) => Cons( x, xs) )
 }
