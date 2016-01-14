@@ -70,6 +70,9 @@ object Main {
 
     val ex321 = List.filter2( list1 )( _ % 2 != 0 )
     println( "Ex. 3.21: " + List.toString(ex321) )
+
+    val ex322 = List.addTogether( list1, list2 )
+    println( "Ex. 3.22: " + List.toString(ex322) )
   }
 
 }
