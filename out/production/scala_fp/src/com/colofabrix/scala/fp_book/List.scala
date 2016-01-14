@@ -169,7 +169,7 @@ object List {
   /* --- Exercise 3.18 --
    * Write a function that generalizes modifying each element in a list while maintaining the structure pf the list.
    */
-  def map[A, B]( as: List[A] )( f: A => B ): List[B] = foldLeft( as, Nil: List[B] )( (x, xs) => Cons( f(x), xs ) )
+  def map[A, B]( as: List[A] )( f: A => B ): List[B] = foldRight( as, Nil: List[B] )( (x, xs) => Cons( f(x), xs ) )
 
   /* --- Exercise 3.19 --
    * Write a function filter that removes elements from a list unless they satisfy a given predicate. Use it to remove
@@ -185,4 +185,10 @@ object List {
    * result, and that list should be inserted into the final resulting
    */
   def flatMap[A, B]( as: List[A] )( f: A => List[B] ): List[B] = List.concatenate( List.map( as )( f ) )
+
+  /* --- Exercise 3.21 --
+   * Use flatMap to implement filter
+   */
+  def filter2[A]( as: List[A] )( f: A => Boolean ): List[A] =
+    List.flatMap( as )( x => if( f(x) ) Cons(x, Nil) else Nil  )
 }

@@ -67,6 +67,9 @@ object Main {
 
     val ex320 = List.flatMap( list1 )( i => List(i, i) )
     println( "Ex. 3.20: " + List.toString(ex320) )
+
+    val ex321 = List.filter2( list1 )( _ % 2 != 0 )
+    println( "Ex. 3.21: " + List.toString(ex321) )
   }
 
 }
