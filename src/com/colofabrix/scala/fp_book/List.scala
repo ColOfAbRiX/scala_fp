@@ -34,8 +34,8 @@ object List {
   def apply[A]( as: A* ): List[A] = if( as.isEmpty ) Nil else Cons( as.head, apply( as.tail: _* ) )
 
   def toString[A]( as: List[A] ): String = as match {
-    case Nil => ""
-    case Cons( x, xs ) => x.toString + toString( xs ) + " "
+    case Nil => " "
+    case Cons( x, xs ) => x.toString + " " + toString( xs )
   }
 
   // --- Listing 3.2 --- //
@@ -119,4 +119,7 @@ object List {
   // It works but it's probably cheating and also less efficient
   def foldLeft2[A, B]( as: List[A], z: B )( f: (A, B) => B ): B = foldRight( List.reverse(as), z )(f)
   def foldRight2[A, B]( as: List[A], z: B )( f: (A, B) => B ): B = foldLeft( List.reverse(as), z )(f)
+
+  // --- Excercise 3.14 --- //
+  def append[A]( as: List[A], a: A ): List[A] = foldRight( as, Cons(a, Nil) )( Cons(_: A, _: List[A]) )
 }

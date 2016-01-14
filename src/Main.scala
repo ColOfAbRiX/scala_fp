@@ -43,7 +43,10 @@ object Main {
     println( "Ex. 3.12: " + List.toString( ex312 ) )
 
     val ex313 = List.foldLeft2( list1, 1.0 )( _ * _ )
-    println( "Ex. 3.12: " + ex313 )
+    println( "Ex. 3.13: " + ex313 )
+
+    val ex314 = List.append( list1, "10" )
+    println( "Ex. 3.14: " + List.toString(ex314) )
   }
 
 }
