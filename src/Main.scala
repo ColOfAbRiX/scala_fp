@@ -58,6 +58,9 @@ object Main {
 
     val ex317 = List.doubleToString( list4 )
     println( "Ex. 3.17: " + List.toString(ex317) )
+
+    val ex318 = List.map( list1 )( Math.pow(_, 2).toInt )
+    println( "Ex. 3.18: " + List.toString(ex318) )
   }
 
 }

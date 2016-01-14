@@ -166,4 +166,9 @@ object List {
    * Write a function that turns each value in a List[Double] into a String.
    */
   def doubleToString( ds: List[Double] ): List[Double] = foldLeft( ds, Nil: List[Double] )( (x, xs) => Cons( x, xs) )
+
+  /* --- Exercise 3.18 --
+   * Write a function that generalizes modifying each element in a list while maintaining the structure pf the list.
+   */
+  def map[A, B]( as: List[A] )( f: A => B ): List[B] = foldLeft( as, Nil: List[B] )( (x, xs) => Cons( f(x), xs ) )
 }
