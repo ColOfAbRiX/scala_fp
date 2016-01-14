@@ -122,4 +122,11 @@ object List {
 
   // --- Excercise 3.14 --- //
   def append[A]( as: List[A], a: A ): List[A] = foldRight( as, Cons(a, Nil) )( Cons(_: A, _: List[A]) )
+
+  // --- Excercise 3.15 --- //
+  def concatenate[A]( as: List[List[A]] ): List[A] = as match {
+    case Nil => Nil
+    case Cons( x, Nil ) => x
+    case Cons( x, xs ) => foldRight( x, concatenate(xs) )( Cons(_, _) )
+  }
 }

@@ -47,6 +47,10 @@ object Main {
 
     val ex314 = List.append( list1, "10" )
     println( "Ex. 3.14: " + List.toString(ex314) )
+
+    val list315= Cons( list1, Cons(list2, Cons( list1, Nil ) ) )
+    val ex315 = List.concatenate( list315 )
+    println( "Ex. 3.15: " + List.toString(ex315) )
   }
 
 }
