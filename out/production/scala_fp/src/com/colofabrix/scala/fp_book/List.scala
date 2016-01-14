@@ -171,4 +171,13 @@ object List {
    * Write a function that generalizes modifying each element in a list while maintaining the structure pf the list.
    */
   def map[A, B]( as: List[A] )( f: A => B ): List[B] = foldLeft( as, Nil: List[B] )( (x, xs) => Cons( f(x), xs ) )
+
+  /* --- Exercise 3.19 --
+   * Write a function filter that removes elements from a list unless they satisfy a given predicate. Use it to remove
+   * all odd numbers from a List[Int]
+   */
+  def filter[A]( as: List[A] )( f: A => Boolean ): List[A] = as match {
+    case Nil => Nil
+    case Cons( x, xs ) => if( f(x) ) Cons( x, filter(xs)(f) ) else filter(xs)(f)
+  }
 }

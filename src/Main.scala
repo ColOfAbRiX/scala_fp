@@ -61,6 +61,9 @@ object Main {
 
     val ex318 = List.map( list1 )( Math.pow(_, 2).toInt )
     println( "Ex. 3.18: " + List.toString(ex318) )
+
+    val ex319 = List.filter(list1)( _ % 2 != 0 )
+    println( "Ex. 3.19: " + List.toString(ex319) )
   }
 
 }
