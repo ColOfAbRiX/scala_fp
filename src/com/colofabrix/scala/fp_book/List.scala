@@ -195,11 +195,22 @@ object List {
   /* --- Exercise 3.22 --
    * Write a function that accepts two lists and constructs a new list by adding corresponding elements
    */
-  def addTogether( as1: List[Int], as2: List[Int] ): List[Int] = as1 match {
+  def addTogether( is1: List[Int], is2: List[Int] ): List[Int] = is1 match {
     case Nil => Nil
-    case Cons( x1, xs1 ) => as2 match {
+    case Cons( x1, xs1 ) => is2 match {
       case Nil => Nil
       case Cons( x2, xs2 ) => Cons( x1 + x2, addTogether( xs1, xs2 ) )
+    }
+  }
+
+  /* --- Exercise 3.23 --
+   * Generalize the function you just wrote so that it's not specific to integers or addition.
+   */
+  def zipWith[A, B, C]( as: List[A], bs: List[B] )( f: (A, B) => C ): List[C] = as match {
+    case Nil => Nil
+    case Cons( ax, axs ) => bs match {
+      case Nil => Nil
+      case Cons( bx, bxs ) => Cons( f(ax, bx), zipWith( axs, bxs )( f ) )
     }
   }
 
