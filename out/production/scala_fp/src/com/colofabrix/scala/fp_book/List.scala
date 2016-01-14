@@ -153,7 +153,6 @@ object List {
    */
   def concatenate[A]( as: List[List[A]] ): List[A] = as match {
     case Nil => Nil
-    case Cons( x, Nil ) => x
     case Cons( x, xs ) => foldRight( x, concatenate(xs) )( Cons(_, _) )
   }
 
@@ -180,4 +179,10 @@ object List {
     case Nil => Nil
     case Cons( x, xs ) => if( f(x) ) Cons( x, filter(xs)(f) ) else filter(xs)(f)
   }
+
+  /* --- Exercise 3.20 --
+   * Write a function flatMap that works like map except that the function given will return a list instead of a single
+   * result, and that list should be inserted into the final resulting
+   */
+  def flatMap[A, B]( as: List[A] )( f: A => List[B] ): List[B] = List.concatenate( List.map( as )( f ) )
 }
