@@ -15,6 +15,7 @@ object Main {
     val list2 = Cons( 1, Nil )
     val list3 = Nil
     val list4 = Cons( 4.1, Cons( 3.2, Cons( 2.3, Cons( 1.4, Nil ) ) ) )
+    val list5 = List( 4, 3 )
 
     val ex32 = List.tail( list1 )
     println( "Ex. 3.2: " + List.toString( ex32 ) )
@@ -76,6 +77,9 @@ object Main {
 
     val ex323 = List.zipWith( list1, list4 )( Math.pow(_, _).toString )
     println( "Ex. 3.23: " + List.toString(ex323) )
+
+    val ex324 = List.hasSubsequence( list1, list5 )
+    println( "Ex. 3.24: " + ex324 )
   }
 
 }

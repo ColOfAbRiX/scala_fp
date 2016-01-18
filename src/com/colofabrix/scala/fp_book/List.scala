@@ -70,6 +70,7 @@ object List {
    * Generalise tail to the function drop, which removes the first n elements from a list. Note that this function
    * takes time proportional only to the number of elements being dropped.
    */
+  @tailrec
   def drop[A]( as: List[A], n: Int ): List[A] = as match {
     case Cons( x, xs ) if n > 0 => drop( xs, n - 1 )
     case _ => as
@@ -78,6 +79,7 @@ object List {
   /* --- Excercise 3.5 ---
    * Implement dropWhile, which removes elements from the List prefix as long as they match a predicate.
    */
+  @tailrec
   def dropWhile[A]( as: List[A], f: A => Boolean ): List[A] = as match {
     case Cons( x, xs ) if f( x ) => dropWhile( xs, f )
     case _ => as
@@ -214,4 +216,15 @@ object List {
     }
   }
 
+  /* --- Exercise 3.24 --
+   * Implement hasSubsequence for checking whether a List contains another List as a subsequence
+   */
+  @tailrec
+  def hasSubsequence[A]( sup: List[A], sub: List[A] ): Boolean = sup match {
+    case Nil => false
+    case Cons( x, xs ) => sub match {
+      case Nil => true
+      case Cons( y, ys ) => if( x == y ) hasSubsequence( xs, ys ) else hasSubsequence( xs, sub )
+    }
+  }
 }
