@@ -91,6 +91,9 @@ object Main {
 
     val ex325 = Tree.count( tree1 )
     println( "Ex. 3.25: " + ex325 )
+
+    val ex326 = Tree.max( tree1 )
+    println( "Ex. 3.26: " + ex326 )
   }
 
 }
