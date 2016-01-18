@@ -80,6 +80,17 @@ object Main {
 
     val ex324 = List.hasSubsequence( list1, list5 )
     println( "Ex. 3.24: " + ex324 )
+
+    val tree1 = new Branch[Int](
+      new Leaf(5),
+      new Branch[Int](
+        new Leaf(12),
+        new Leaf(-5)
+      )
+    )
+
+    val ex325 = Tree.count( tree1 )
+    println( "Ex. 3.25: " + ex325 )
   }
 
 }
