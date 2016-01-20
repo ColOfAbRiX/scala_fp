@@ -94,6 +94,9 @@ object Main {
 
     val ex326 = Tree.max( tree1 )
     println( "Ex. 3.26: " + ex326 )
+
+    val ex327 = Tree.depth( tree1 )
+    println( "Ex. 3.27: " + ex327 )
   }
 
 }

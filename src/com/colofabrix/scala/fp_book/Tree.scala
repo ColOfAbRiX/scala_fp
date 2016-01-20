@@ -34,4 +34,12 @@ object Tree {
     case b: Branch[Int] => Math.max( max( b.left ), max( b.right ) )
   }
 
+  /* --- Excercise 3.27 ---
+   * Write a function depth that returns the maximum path length from the root of a tree to any leaf.
+   */
+  def depth[T]( t: Tree[T] ): Int = t match {
+    case l: Leaf[T] => 1
+    case b: Branch[T] => 1 + Math.max( depth(b.left), depth(b.right) )
+  }
+
 }
