@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="957cf173-5887-4f39-a9a2-eafd101585c7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.scala" afterPath="$PROJECT_DIR$/src/Main.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/colofabrix/scala/fp_book/Tree.scala" afterPath="$PROJECT_DIR$/src/com/colofabrix/scala/fp_book/Tree.scala" />
     </list>
     <ignored path="scala_fp.iws" />
@@ -26,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6960894">
+              <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -38,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tree.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Tree.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/colofabrix/scala/fp_book/Tree.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.81675977">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -71,8 +72,8 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/com/colofabrix/scala/fp_book/List.scala" />
-        <option value="$PROJECT_DIR$/src/Main.scala" />
         <option value="$PROJECT_DIR$/src/com/colofabrix/scala/fp_book/Tree.scala" />
+        <option value="$PROJECT_DIR$/src/Main.scala" />
       </list>
     </option>
   </component>
@@ -519,6 +520,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -536,6 +540,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -553,6 +560,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -582,15 +592,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/colofabrix/scala/fp_book/List.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7060811">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.35418993">
+          <caret line="173" column="9" selection-start-line="173" selection-start-column="6" selection-end-line="173" selection-end-column="9" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -599,8 +602,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/colofabrix/scala/fp_book/Tree.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81675977">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6960894">
+          <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

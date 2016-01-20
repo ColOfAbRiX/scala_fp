@@ -81,7 +81,7 @@ object Main {
     val ex324 = List.hasSubsequence( list1, list5 )
     println( "Ex. 3.24: " + ex324 )
 
-    val tree1 = new Branch[Int](
+    val tree1: Tree[Int] = new Branch[Int](
       new Leaf(5),
       new Branch[Int](
         new Leaf(12),
@@ -97,6 +97,9 @@ object Main {
 
     val ex327 = Tree.depth( tree1 )
     println( "Ex. 3.27: " + ex327 )
+
+    val ex328 = Tree.map[Int, Double]( tree1 )( x => Math.sqrt(x.toDouble) )
+    println( "Ex. 3.28: " + ex328 )
   }
 
 }

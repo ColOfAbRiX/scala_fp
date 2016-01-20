@@ -42,4 +42,12 @@ object Tree {
     case b: Branch[T] => 1 + Math.max( depth(b.left), depth(b.right) )
   }
 
+  /* --- Excercise 3.28 ---
+   * Write a function map, analogous to the method of the same name on List, that modifies each element in a tree
+   * with a given function
+   */
+  def map[T, U]( t: Tree[T] )( f: T => U ): Tree[U] = t match {
+    case l: Leaf[T] => Leaf( f( l.value ) )
+    case b: Branch[T] => Branch[U]( map(b.left)(f), map(b.right)(f) )
+  }
 }
