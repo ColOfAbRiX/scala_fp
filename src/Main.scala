@@ -100,6 +100,11 @@ object Main {
 
     val ex328 = Tree.map[Int, Double]( tree1 )( x => Math.sqrt(x.toDouble) )
     println( "Ex. 3.28: " + ex328 )
+
+    val ex329 = Tree.max2( tree1 )
+    val ex329b = Tree.map2[Int, Double]( tree1 )( x => Math.sqrt(x.toDouble) )
+    println( "Ex. 3.29: " + ex329 )
+    println( "Ex. 3.29b: " + ex329b )
   }
 
 }

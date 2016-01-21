@@ -50,4 +50,18 @@ object Tree {
     case l: Leaf[T] => Leaf( f( l.value ) )
     case b: Branch[T] => Branch[U]( map(b.left)(f), map(b.right)(f) )
   }
+
+  /* --- Excercise 3.28 ---
+   * Generalize size, maximum, depth and map, writing a new function fold that abstracts over their similarities.
+   * Reimplement them in terms of this more general function.
+   */
+  def fold[T, U]( t: Tree[T] )( f: T => U )( g: (U, U) => U ): U = t match {
+    case l: Leaf[T] => f( l.value )
+    case b: Branch[T] => g( fold( b.left )(f)(g), fold( b.right )(f)(g) )
+  }
+
+  def count2[T]( t: Tree[T] ): Int = fold( t )( x => 1 )( _ + _ )
+  def max2( t: Tree[Int] ): Int = fold[Int, Int]( t )( x => x )( Math.max )
+  def depth2[T]( t: Tree[T] ): Int = fold( t )( x => 1 )( Math.max )
+  def map2[T, U]( t: Tree[T] )( f: T => U ): Tree[U] = fold[T, Tree[U]]( t )( x => Leaf(f(x)) )( (l, r) => Branch[U]( l, r ) )
 }
