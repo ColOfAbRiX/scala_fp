@@ -10,7 +10,7 @@
 
 package com.colofabrix.scala.fp_book
 
-trait Option[+A] {
+sealed trait Option[+A] {
 
   // --- Listing 4.2 --- //
 
@@ -25,3 +25,7 @@ trait Option[+A] {
   def filter( f: A => Boolean ): Option[A]
 
 }
+
+case class Some[+A]( get: A ) extends Option[A]
+
+case object None extends Option[Nothing]
