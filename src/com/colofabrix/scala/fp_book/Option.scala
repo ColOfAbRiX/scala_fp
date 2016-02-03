@@ -14,15 +14,34 @@ sealed trait Option[+A] {
 
   // --- Listing 4.2 --- //
 
-  def map[B]( f: A => B ): Option[A]
+  /* --- Exercise 3.20 --
+   * Implement all the function map, flatMap, getOrElse, orElse and filter on Option. It's fine to use
+   * pattern matching, though you should be able to implement all the function besides map and getOrElse
+   * without resorting to pattern matching.
+   */
 
-  def flatMap[B]( f: A => Option[B] ): Option[B]
+  // Apply f if Option is not None
+  def map[B]( f: A => B ): Option[B] = flatMap( x => Some( f( x ) ) )
 
-  def getOrElse[B >: A]( default: => B): B
+  // Apply f, which may fail, to the Option if not None
+  def flatMap[B]( f: A => Option[B] ): Option[B] = this match {
+    case None => None
+    case Some( x ) => f( x )
+  }
 
-  def orElse[B >: A]( ob: => Option[B] ): Option[B]
+  // Returns the result inside the Some case of the Option, or, if the Option is None, returns the
+  // default given value
+  def getOrElse[B >: A]( default: => B ): B = this match {
+    case None => default
+    case Some( x ) => x
+  }
 
-  def filter( f: A => Boolean ): Option[A]
+  // Returns the first Option if it's defined, otherwise it returns the second Option
+  def orElse[B >: A]( ob: => Option[B] ): Option[B] = flatMap( x => ob )
+
+  // Convert Some to None if the value doesn't satisfy f
+  def filter( f: A => Boolean ): Option[A] =
+    flatMap { x => if( f(x) ) Some(x) else None }
 
 }
 
