@@ -42,9 +42,26 @@ sealed trait Option[+A] {
   // Convert Some to None if the value doesn't satisfy f
   def filter( f: A => Boolean ): Option[A] =
     flatMap { x => if( f(x) ) Some(x) else None }
-
 }
 
 case class Some[+A]( get: A ) extends Option[A]
 
 case object None extends Option[Nothing]
+
+object OptionSupport {
+
+  /* --- Exercise 3.20 --
+   * Implement the variance function in terms of flatMap.
+   */
+  def variance( xs: Seq[Double] ): Option[Double] = {
+    val xMean = mean( xs )
+    xMean.flatMap { m =>
+      mean( xs.map { x =>
+        Math.pow( x - m, 2 )
+      } )
+    }
+  }
+
+  def mean( xs: Seq[Double] ): Option[Double] = if( xs.isEmpty ) None else Some( xs.sum / xs.length )
+
+}

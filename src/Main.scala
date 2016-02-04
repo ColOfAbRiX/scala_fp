@@ -119,6 +119,8 @@ object Main {
     val ex41b = noIntValue.flatMap( x => if( x % 2 == 0 ) None else Some( x ) )
     println( "Ex. 4.1b: " + ex41b )
 
+    val ex42 = OptionSupport.variance( Seq( 4.1, 3.2, 2.3, 1.4 ) ).getOrElse( Double.NaN )
+    println( "Ex. 4.2b: " + ex42 )
   }
 
 }
