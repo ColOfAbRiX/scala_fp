@@ -110,7 +110,7 @@ object Main {
     println( "Ex. 3.29b: " + ex329b )
 
     // --- Chapter 4 --- //
-    val someIntValue: Option[Int] = Some( 1 )
+    val someIntValue: Option[Int] = Some( 2 )
     val noIntValue: Option[Int] = None
 
     val ex41a = someIntValue.map( _.toString + "#" )
@@ -121,6 +121,9 @@ object Main {
 
     val ex42 = OptionSupport.variance( Seq( 4.1, 3.2, 2.3, 1.4 ) ).getOrElse( Double.NaN )
     println( "Ex. 4.2b: " + ex42 )
+
+    val ex43 = someIntValue.map2( someIntValue )( _ * _ )
+    println( "Ex. 4.3: " + ex43 )
   }
 
 }

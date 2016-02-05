@@ -42,6 +42,17 @@ sealed trait Option[+A] {
   // Convert Some to None if the value doesn't satisfy f
   def filter( f: A => Boolean ): Option[A] =
     flatMap { x => if( f(x) ) Some(x) else None }
+
+  /* --- Exercise 4.3 --
+   * Write a generic function map2 that combines two Option values using a binary function. If
+   * either Option value is None, then the return value is too.
+   */
+  def map2[B, C]( b: Option[B] )( f: (A, B) => C ): Option[C] =
+    this flatMap { ax =>
+      b flatMap { bx =>
+        Some( f(ax, bx) )
+      }
+    }
 }
 
 case class Some[+A]( get: A ) extends Option[A]
@@ -50,7 +61,7 @@ case object None extends Option[Nothing]
 
 object OptionSupport {
 
-  /* --- Exercise 3.20 --
+  /* --- Exercise 4.2 --
    * Implement the variance function in terms of flatMap.
    */
   def variance( xs: Seq[Double] ): Option[Double] = {
