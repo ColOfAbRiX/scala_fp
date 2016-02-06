@@ -59,7 +59,7 @@ case class Some[+A]( get: A ) extends Option[A]
 
 case object None extends Option[Nothing]
 
-object OptionSupport {
+object Option {
 
   /* --- Exercise 4.2 ---
    * Implement the variance function in terms of flatMap.
@@ -86,9 +86,20 @@ object OptionSupport {
   def sequence[A]( a: List[Option[A]] ): Option[List[A]] = a match {
     case Nil => None
     case Cons( x, Nil ) => x.map( Cons( _, Nil ) )
-    case Cons( x, xs ) => x.flatMap { xi =>
-      sequence( xs ).map2( x )( ( ys, y ) => Cons( y, ys ) )
-    }
+    case Cons( x, xs ) => sequence( xs ).map2( x )( ( ys, y ) => Cons( y, ys ) )
   }
+
+  /* --- Exercise 4.5 ---
+   * Implement the traverse function. It's straightforward to do using map and sequence, but try
+   * for a more efficient implementation that only looks at the list once. In fact, implement
+   * sequence in terms of traverse
+   */
+  def traverse[A, B]( a: List[A] )( f: A => Option[B] ): Option[List[B]] = a match {
+    case Nil => None
+    case Cons( x, Nil ) => f( x ).map( Cons( _, Nil ) )
+    case Cons( x, xs ) => traverse( xs )( f ).map2( f( x ) )( ( ys, y ) => Cons( y, ys ) )
+  }
+
+  def sequence2[A]( a: List[Option[A]] ) = traverse( a )( x => x )
 
 }

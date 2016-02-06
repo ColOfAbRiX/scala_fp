@@ -111,6 +111,7 @@ object Main {
 
     // --- Chapter 4 --- //
     val someIntValue: Option[Int] = Some( 2 )
+    val someListValue: List[Option[Int]] = List( Some(2), Some(1), Some(4) )
     val noIntValue: Option[Int] = None
 
     val ex41a = someIntValue.map( _.toString + "#" )
@@ -119,14 +120,17 @@ object Main {
     val ex41b = noIntValue.flatMap( x => if( x % 2 == 0 ) None else Some( x ) )
     println( "Ex. 4.1b: " + ex41b )
 
-    val ex42 = OptionSupport.variance( Seq( 4.1, 3.2, 2.3, 1.4 ) ).getOrElse( Double.NaN )
+    val ex42 = Option.variance( Seq( 4.1, 3.2, 2.3, 1.4 ) ).getOrElse( Double.NaN )
     println( "Ex. 4.2b: " + ex42 )
 
     val ex43 = someIntValue.map2( someIntValue )( _ * _ )
     println( "Ex. 4.3: " + ex43 )
 
-    val ex44 = OptionSupport.sequence( List( Some(2), Some(1), Some(4) ) )
+    val ex44 = Option.sequence( someListValue )
     println( "Ex. 4.4: " + ex44 )
+
+    val ex45 = Option.sequence( someListValue )
+    println( "Ex. 4.5: " + ex45 )
   }
 
 }
