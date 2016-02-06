@@ -124,6 +124,9 @@ object Main {
 
     val ex43 = someIntValue.map2( someIntValue )( _ * _ )
     println( "Ex. 4.3: " + ex43 )
+
+    val ex44 = OptionSupport.sequence( List( Some(2), Some(1), Some(4) ) )
+    println( "Ex. 4.4: " + ex44 )
   }
 
 }

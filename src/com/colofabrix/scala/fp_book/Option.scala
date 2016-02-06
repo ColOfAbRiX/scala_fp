@@ -14,7 +14,7 @@ sealed trait Option[+A] {
 
   // --- Listing 4.2 --- //
 
-  /* --- Exercise 3.20 --
+  /* --- Exercise 3.20 ---
    * Implement all the function map, flatMap, getOrElse, orElse and filter on Option. It's fine to use
    * pattern matching, though you should be able to implement all the function besides map and getOrElse
    * without resorting to pattern matching.
@@ -41,16 +41,16 @@ sealed trait Option[+A] {
 
   // Convert Some to None if the value doesn't satisfy f
   def filter( f: A => Boolean ): Option[A] =
-    flatMap { x => if( f(x) ) Some(x) else None }
+    flatMap { x => if( f( x ) ) Some( x ) else None }
 
-  /* --- Exercise 4.3 --
+  /* --- Exercise 4.3 ---
    * Write a generic function map2 that combines two Option values using a binary function. If
    * either Option value is None, then the return value is too.
    */
   def map2[B, C]( b: Option[B] )( f: (A, B) => C ): Option[C] =
     this flatMap { ax =>
       b flatMap { bx =>
-        Some( f(ax, bx) )
+        Some( f( ax, bx ) )
       }
     }
 }
@@ -61,18 +61,34 @@ case object None extends Option[Nothing]
 
 object OptionSupport {
 
-  /* --- Exercise 4.2 --
+  /* --- Exercise 4.2 ---
    * Implement the variance function in terms of flatMap.
    */
   def variance( xs: Seq[Double] ): Option[Double] = {
     val xMean = mean( xs )
     xMean.flatMap { m =>
-      mean( xs.map { x =>
-        Math.pow( x - m, 2 )
-      } )
+      mean(
+        xs.map { x =>
+          Math.pow( x - m, 2 )
+        }
+      )
     }
   }
 
   def mean( xs: Seq[Double] ): Option[Double] = if( xs.isEmpty ) None else Some( xs.sum / xs.length )
+
+  /* --- Exercise 4.4 ---
+   * Write a function sequence that combines a list of Options into one Option containing a list
+   * of all the Some values in the original list. If the original list contains None even once,
+   * the result of the function should be None; otherwise the result should be Some with a list of
+   * all the values
+   */
+  def sequence[A]( a: List[Option[A]] ): Option[List[A]] = a match {
+    case Nil => None
+    case Cons( x, Nil ) => x.map( Cons( _, Nil ) )
+    case Cons( x, xs ) => x.flatMap { xi =>
+      sequence( xs ).map2( x )( ( ys, y ) => Cons( y, ys ) )
+    }
+  }
 
 }
