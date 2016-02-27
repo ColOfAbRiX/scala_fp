@@ -131,6 +131,13 @@ object Main {
 
     val ex45 = Option.sequence( someListValue )
     println( "Ex. 4.5: " + ex45 )
+
+    val eitherValue1 = Right( 2.0 )
+    val eitherValue2 = Left( "Error" )
+    val eitherValue3 = Right( 3.0 )
+
+    val ex46 = eitherValue1.map2( eitherValue3 )( Math.pow )
+    println( "Ex. 4.6: " + ex46 )
   }
 
 }
