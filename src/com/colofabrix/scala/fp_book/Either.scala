@@ -27,6 +27,29 @@ sealed trait Either[+E, +A] {
       case Right( bValue ) => Right( f( value, bValue ) )
     }
   }
+}
+
+object Either {
+
+  import scala.{ List => SList, Nil => SNil }
+
+  /* --- Exercise 4.7 ---
+   * Implement sequence and traverse for Either. These should return the first error that's
+   * encountered, if there is one
+   */
+
+  def sequence[E, A]( es: SList[Either[E, A]] ): Either[E, SList[A]] = es match {
+    case x :: xs => x match {
+      case Left( v ) => Left( v )
+      case Right( v ) => sequence( xs ).map2( x )( _.::( _ ) )
+    }
+    case SNil => Right( SNil )
+  }
+
+  def traverse[E, A, B]( as: SList[A] )( f: A => Either[E, B] ): Either[E, SList[B]] = as match {
+    case x :: xs => traverse( xs )( f ).map2( f( x ) )( _.::( _ ) )
+    case SNil => Right( SNil )
+  }
 
 }
 

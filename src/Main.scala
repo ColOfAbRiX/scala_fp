@@ -138,6 +138,11 @@ object Main {
 
     val ex46 = eitherValue1.map2( eitherValue3 )( Math.pow )
     println( "Ex. 4.6: " + ex46 )
+
+    val ex47a = Either.sequence( scala.List( eitherValue1, eitherValue2, eitherValue3 ) )
+    val ex47b = Either.sequence( scala.List( eitherValue1, eitherValue3 ) )
+    println( "Ex. 4.7a: " + ex47a )
+    println( "Ex. 4.7b: " + ex47b )
   }
 
 }
