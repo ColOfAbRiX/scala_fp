@@ -143,6 +143,11 @@ object Main {
     val ex47b = Either.sequence( scala.List( eitherValue1, eitherValue3 ) )
     println( "Ex. 4.7a: " + ex47a )
     println( "Ex. 4.7b: " + ex47b )
+
+    // --- Chapter 5--- //
+    val ex51 = Stream( 1, 2, 3, 4 ).toList
+    println( "Ex. 5.1: " + ex51 )
+
   }
 
 }
