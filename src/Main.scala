@@ -148,6 +148,10 @@ object Main {
     val ex51 = Stream( 1, 2, 3, 4 ).toList
     println( "Ex. 5.1: " + ex51 )
 
+    val ex52a = Stream( 1, 2, 3, 4, 5 ).take( 2 )
+    val ex52b = Stream( 1, 2, 3, 4, 5 ).drop( 2 )
+    println( "Ex. 5.2a: " + ex52a )
+    println( "Ex. 5.2b: " + ex52b )
   }
 
 }
