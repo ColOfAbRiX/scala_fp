@@ -51,28 +51,34 @@ sealed trait Stream[+A] {
   }
 
   def drop( n: Int ): Stream[A] = this match {
-    case Empty => Empty
-    case SCons( _, t ) if n > 1 => t( ).drop( n - 1 )
-    case SCons( _, t ) if n <= 1 => t( )
+    case SCons( _, t ) if n > 0 => t( ).drop( n - 1 )
+    case _ => this
   }
 
-  /* --- Exercise 5.3---
+  /* --- Exercise 5.3 ---
    * Write the function takeWhile for returning all the starting elements of a Stream that
    * match the given predicate
    */
   def takeWhile( p: A => Boolean ): Stream[A] = this match {
-    case Empty => Empty
+    //case Empty => Empty
     case SCons( h, t ) if p( h( ) ) => SCons( h, ( ) => t( ).takeWhile( p ) )
-    case SCons( h, t ) => Empty
+    case _ => Empty
+    //case SCons( h, t ) => Empty
   }
 
-  /* --- Exercise 5.4---
+  /* --- Exercise 5.4 ---
    * Implement forAll, which checks that all elements in the Stream match a given predicate.
-   * Your implementation should terminate the trasversal as soon as it encounters a nonmatchiing
+   * Your implementation should terminate the trasversal as soon as it encounters a nonmatching
    * value.
    */
   def forAll( p: A => Boolean ): Boolean = foldRight( true )( ( b, a ) => a && p( b ) )
 
+  /* --- Exercise 5.5 ---
+   * Use foldRight to implement takeWhile
+   */
+  def takeWhile2( p: A => Boolean ): Stream[A] = foldRight( Stream.empty[A] ) { ( a, s ) =>
+    if( p( a ) ) SCons( ( ) => a, ( ) => s ) else s
+  }
 }
 
 case object Empty extends Stream[Nothing]
