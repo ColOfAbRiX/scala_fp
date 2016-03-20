@@ -19,6 +19,17 @@ sealed trait Stream[+A] {
     case SCons( h, t ) => h( ).toString + " " + t( ).toString
   }
 
+  def exists( p: A => Boolean ): Boolean = this match {
+    case SCons( h, t ) => p( h( ) ) || t( ).exists( p )
+    case Empty => false
+  }
+
+  def foldRight[B]( z: => B )( f: (A, => B) => B ): B =
+    this match {
+      case SCons( h, t ) => f( h( ), t( ).foldRight( z )( f ) )
+      case _ => z
+    }
+
   /* --- Exercise 5.1 ---
    * Write a function to convert a Stream toa List, which will force its evaluation
    * and let you look at in the REPL. You can convert the regular List type in the
@@ -54,6 +65,13 @@ sealed trait Stream[+A] {
     case SCons( h, t ) if p( h( ) ) => SCons( h, ( ) => t( ).takeWhile( p ) )
     case SCons( h, t ) => Empty
   }
+
+  /* --- Exercise 5.4---
+   * Implement forAll, which checks that all elements in the Stream match a given predicate.
+   * Your implementation should terminate the trasversal as soon as it encounters a nonmatchiing
+   * value.
+   */
+  def forAll( p: A => Boolean ): Boolean = foldRight( true )( ( b, a ) => a && p( b ) )
 
 }
 
