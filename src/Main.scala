@@ -111,7 +111,7 @@ object Main {
 
     // --- Chapter 4 --- //
     val someIntValue: Option[Int] = Some( 2 )
-    val someListValue: List[Option[Int]] = List( Some(2), Some(1), Some(4) )
+    val someListValue: List[Option[Int]] = List( Some( 2 ), Some( 1 ), Some( 4 ) )
     val noIntValue: Option[Int] = None
 
     val ex41a = someIntValue.map( _.toString + "#" )
@@ -145,13 +145,18 @@ object Main {
     println( "Ex. 4.7b: " + ex47b )
 
     // --- Chapter 5--- //
-    val ex51 = Stream( 1, 2, 3, 4 ).toList
+    val intStream = Stream( 1, 2, 3, 4, 5 )
+
+    val ex51 = intStream.toList
     println( "Ex. 5.1: " + ex51 )
 
-    val ex52a = Stream( 1, 2, 3, 4, 5 ).take( 2 )
-    val ex52b = Stream( 1, 2, 3, 4, 5 ).drop( 2 )
+    val ex52a = intStream.take( 2 )
+    val ex52b = intStream.drop( 2 )
     println( "Ex. 5.2a: " + ex52a )
     println( "Ex. 5.2b: " + ex52b )
+
+    val ex53 = intStream.takeWhile( _ % 2 != 0 )
+    println( "Ex. 5.3: " + ex53 )
   }
 
 }
