@@ -61,6 +61,8 @@ case object None extends Option[Nothing]
 
 object Option {
 
+  def none[A]: Option[A] = None
+
   /* --- Exercise 4.2 ---
    * Implement the variance function in terms of flatMap.
    */

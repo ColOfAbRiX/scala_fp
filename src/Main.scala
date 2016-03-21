@@ -163,6 +163,9 @@ object Main {
 
     val ex55 = intStream.takeWhile( _ % 2 != 0 )
     println( "Ex. 5.5: " + ex55 )
+
+    val ex56 = intStream.headOption
+    println( "Ex. 5.6: " + ex56 )
   }
 
 }
