@@ -185,6 +185,9 @@ object Main {
 
     val ex59 = Stream.from( 5 )
     println( "Ex. 5.9: " + ex59.take( 5 ) )
+
+    val ex510 = Stream.fibs
+    println( "Ex. 5.10: " + ex510.take( 10 ) )
   }
 
 }

@@ -139,4 +139,12 @@ object Stream {
    * Write a function that generates an infinite stream of integer, starting from , then n + 1, n + 2 and so on.
    */
   def from( n: Int ): Stream[Int] = Stream.scons( n, from( n + 1 ) )
+
+  /* --- Exercise 5.10 ---
+   * Write a function fibs that generates the infinite stream of Fibonacci numbers
+   */
+  def fibs: Stream[Int] = {
+    def loop( n: Int, m: Int ): Stream[Int] = Stream.scons( n, loop( m, n + m ) )
+    loop( 0, 1 )
+  }
 }
