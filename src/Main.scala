@@ -170,7 +170,7 @@ object Main {
     println( "Ex. 5.6b: " + ex56b )
 
     val ex57a = intStream.map( x => x * x )
-    val ex57b = intStream.append( () => 6 )
+    val ex57b = intStream.append( ( ) => 6 )
     val ex57c = intStream.filter( _ % 2 == 0 )
     val ex57d = intStream.flatMap { x =>
       if( x % 2 == 0 ) Stream( x, x ) else Stream( x )
@@ -179,6 +179,9 @@ object Main {
     println( "Ex. 5.7b: " + ex57b )
     println( "Ex. 5.7c: " + ex57c )
     println( "Ex. 5.7d: " + ex57d )
+
+    val ex58 = Stream.constant( Math.PI )
+    println( "Ex. 5.8: " + ex58.take( 5 ) )
   }
 
 }
