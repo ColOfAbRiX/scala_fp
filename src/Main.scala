@@ -182,6 +182,9 @@ object Main {
 
     val ex58 = Stream.constant( Math.PI )
     println( "Ex. 5.8: " + ex58.take( 5 ) )
+
+    val ex59 = Stream.from( 5 )
+    println( "Ex. 5.9: " + ex59.take( 5 ) )
   }
 
 }
