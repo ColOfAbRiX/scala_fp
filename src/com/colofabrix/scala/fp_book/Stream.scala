@@ -163,4 +163,16 @@ object Stream {
 
     loop( f, z )
   }
+
+  /* --- Exercise 5.12 ---
+   * Write fibs, from, constant and ones in therm of unfold
+   */
+  def constant2[A]( a: A ): Stream[A] = unfold( a )( s => Some( (s, s) ) )
+
+  def from2( n: Int ): Stream[Int] = unfold( n ) { s => Some( (s, s + 1) ) }
+
+  def fibs2: Stream[Int] = unfold( (0, 1) ) { s =>
+    Some( Tuple2( s._1, Tuple2( s._2, s._1 + s._2 ) ) )
+  }
+
 }

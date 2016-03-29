@@ -191,6 +191,13 @@ object Main {
 
     val ex511 = Stream.unfold( 0 ) { s => Some( (s, s + 1) ) }
     println( "Ex. 5.11: " + ex511.take( 10 ) )
+
+    val ex512a = Stream.constant2( Math.PI )
+    val ex512b = Stream.from2( 5 )
+    val ex512c = Stream.fibs2
+    println( "Ex. 5.12a: " + ex512a.take( 10 ) )
+    println( "Ex. 5.12b: " + ex512b.take( 10 ) )
+    println( "Ex. 5.12c: " + ex512c.take( 10 ) )
   }
 
 }
