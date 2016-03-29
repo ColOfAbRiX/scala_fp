@@ -188,6 +188,9 @@ object Main {
 
     val ex510 = Stream.fibs
     println( "Ex. 5.10: " + ex510.take( 10 ) )
+
+    val ex511 = Stream.unfold( 0 ) { s => Some( (s, s + 1) ) }
+    println( "Ex. 5.11: " + ex511.take( 10 ) )
   }
 
 }

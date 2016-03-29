@@ -147,4 +147,20 @@ object Stream {
     def loop( n: Int, m: Int ): Stream[Int] = Stream.scons( n, loop( m, n + m ) )
     loop( 0, 1 )
   }
+
+  /* --- Exercise 5.11 ---
+   * Write a more general stream-building function called unfold. It takes an initial state and a function
+   * for producing both the next state and the next value in the generated stream.
+   * Option is used ti indicate when the Stream should be terminated, if at all.
+   */
+  def unfold[A, S]( z: S )( f: S => Option[(A, S)] ): Stream[A] = {
+    def loop( f: S => Option[(A, S)], s: S ): Stream[A] = {
+      f( s ) match {
+        case None => Stream.empty[A]
+        case Some( (a, ns) ) => Stream.scons( a, loop( f, ns ) )
+      }
+    }
+
+    loop( f, z )
+  }
 }
