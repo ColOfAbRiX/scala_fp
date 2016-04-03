@@ -1,12 +1,12 @@
 /**
-  * Functional Programming in Scala
-  * P. Chiusano, R. Bjarnason
-  * Manning Edition
-  *
-  * Exercises solved by Fabrizio Colonna
-  *
-  * Chapter 5
-  */
+ * Functional Programming in Scala
+ * P. Chiusano, R. Bjarnason
+ * Manning Edition
+ *
+ * Exercises solved by Fabrizio Colonna
+ *
+ * Chapter 5
+ */
 
 package com.colofabrix.scala.fp_book
 
@@ -91,7 +91,7 @@ sealed trait Stream[+A] {
    * Implement map, filter, append and flatMap using foldRight. The append method should
    * be non strict in its arguments
    */
-  def map[B]( f: A => B ): Stream[B] =
+  def map2[B]( f: A => B ): Stream[B] =
     this.foldRight( Stream.empty[B] ) { ( a, b ) =>
       Stream.scons( f( a ), b )
     }
@@ -107,6 +107,52 @@ sealed trait Stream[+A] {
     this.foldRight( Stream.scons[B]( b( ), Empty ) ) {
       Stream.scons( _, _ )
     }
+
+  /* --- Exercise 5.13 ---
+   * Use unfold to implement map, take, takeWhile, zipWith (as in chapter 3) and zipAll. The zipAll function
+   * should continue the traversal as long as either stream has more elements - it uses Option to indicate
+   * whether each stream has been exhausted
+   */
+  def map[B]( f: A => B ): Stream[B] = Stream.unfold( this ) {
+    case Empty => None
+    case SCons( a, t ) => Some( (f( a( ) ), t( )) )
+  }
+
+  def take2( n: Int ): Stream[A] = Stream.unfold( (this, 0) ) { s =>
+    s._1 match {
+      case SCons( a, t ) if s._2 < n => Some( (a( ), (t( ), s._2 + 1)) )
+      case _ => None
+    }
+  }
+
+  def takeWhile3( p: A => Boolean ): Stream[A] = Stream.unfold( this ) {
+    case SCons( a, t ) if p( a( ) ) => Some( a( ), t( ) )
+    case _ => None
+  }
+
+  def zipWith[B, C]( bs: Stream[B] )( f: (A, B) => C ): Stream[C] =
+    Stream.unfold( (this, bs) ) {
+      case (SCons( a, at ), SCons( b, bt )) => Some( (f( a( ), b( ) ), (at( ), bt( ))) )
+      case _ => None
+    }
+
+  def zipAll[B]( bs: Stream[B] ): Stream[(Option[A], Option[B])] =
+    Stream.unfold( (this, bs) ) {
+      case (SCons( a, at ), SCons( b, bt )) => Some(
+        Tuple2( Some( a( ) ), Some( b( ) ) ),
+        Tuple2( at( ), bt( ) )
+      )
+      case (Empty, SCons( b, bt )) => Some(
+        Tuple2( None, Some( b( ) ) ),
+        Tuple2( Stream.empty[A], bt( ) )
+      )
+      case (SCons( a, at ), Empty) => Some(
+        Tuple2( Some( a( ) ), None ),
+        Tuple2( at( ), Stream.empty[B] )
+      )
+      case _ => None
+    }
+
 }
 
 case object Empty extends Stream[Nothing]

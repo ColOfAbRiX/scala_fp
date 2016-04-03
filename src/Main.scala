@@ -1,10 +1,10 @@
 /**
-  * Functional Programming in Scala
-  * P. Chiusano, R. Bjarnason
-  * Manning Edition
-  *
-  * Exercises solved by Fabrizio Colonna
-  */
+ * Functional Programming in Scala
+ * P. Chiusano, R. Bjarnason
+ * Manning Edition
+ *
+ * Exercises solved by Fabrizio Colonna
+ */
 
 import com.colofabrix.scala.fp_book._
 
@@ -146,6 +146,7 @@ object Main {
 
     // --- Chapter 5--- //
     val intStream = Stream( 1, 2, 3, 4, 5 )
+    val doubleStream = Stream( 6.0, 5.0, 4.0, 3.0, 2.0, 1.0 )
 
     val ex51 = intStream.toList
     println( "Ex. 5.1: " + ex51 )
@@ -198,6 +199,17 @@ object Main {
     println( "Ex. 5.12a: " + ex512a.take( 10 ) )
     println( "Ex. 5.12b: " + ex512b.take( 10 ) )
     println( "Ex. 5.12c: " + ex512c.take( 10 ) )
+
+    val ex513a = intStream.map2( x => x * 3 + 12 )
+    val ex513b = intStream.take2( 2 )
+    val ex513c = intStream.takeWhile3( _ % 2 != 0 )
+    val ex513d = intStream.zipWith( doubleStream )( _ * _ )
+    val ex513e = intStream.zipAll( doubleStream )
+    println( "Ex. 5.13a: " + ex513a.take( 10 ) )
+    println( "Ex. 5.13b: " + ex513b.take( 10 ) )
+    println( "Ex. 5.13c: " + ex513c.take( 10 ) )
+    println( "Ex. 5.13d: " + ex513d.take( 10 ) )
+    println( "Ex. 5.13e: " + ex513e.take( 10 ) )
   }
 
 }
