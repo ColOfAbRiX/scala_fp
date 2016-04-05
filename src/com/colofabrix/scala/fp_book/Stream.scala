@@ -1,12 +1,12 @@
 /**
- * Functional Programming in Scala
- * P. Chiusano, R. Bjarnason
- * Manning Edition
- *
- * Exercises solved by Fabrizio Colonna
- *
- * Chapter 5
- */
+  * Functional Programming in Scala
+  * P. Chiusano, R. Bjarnason
+  * Manning Edition
+  *
+  * Exercises solved by Fabrizio Colonna
+  *
+  * Chapter 5
+  */
 
 package com.colofabrix.scala.fp_book
 
@@ -153,6 +153,12 @@ sealed trait Stream[+A] {
       case _ => None
     }
 
+
+  /* --- Exercise 5.14 ---
+   * Implement startWith using functions you've already written. It should check if one Stream is a prefix of another.
+   * For instance, Stream(1, 2, 3) startWith Stream(1, 2) would be true
+   */
+  def startWith[B >: A]( s: Stream[B] ): Boolean = this.zipWith( s )( _ == _ ).foldRight( true )( _ && _ )
 }
 
 case object Empty extends Stream[Nothing]

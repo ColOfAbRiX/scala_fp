@@ -210,6 +210,9 @@ object Main {
     println( "Ex. 5.13c: " + ex513c.take( 10 ) )
     println( "Ex. 5.13d: " + ex513d.take( 10 ) )
     println( "Ex. 5.13e: " + ex513e.take( 10 ) )
+
+    val ex514 = intStream.startWith( Stream(1, 2) )
+    println( "Ex. 5.14: " + ex514 )
   }
 
 }
