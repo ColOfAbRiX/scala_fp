@@ -216,6 +216,9 @@ object Main {
 
     val ex515 = intStream.tails
     println( "Ex. 5.15: " + ex515 )
+
+    val ex516 = intStream.scanRight( 0 )( _ + _ )
+    println( "Ex. 5.16: " + ex516 )
   }
 
 }

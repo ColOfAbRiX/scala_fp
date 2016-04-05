@@ -168,6 +168,17 @@ sealed trait Stream[+A] {
     case s@SCons( a, t ) => Some( s, t( ) )
     case Empty => None
   }
+
+  /* --- Exercise 5.16 ---
+   * Generalize tails to the function scanRight, which is like a foldRight that returns a Stream of the intermediate
+   * results
+   */
+  def scanRight[B]( z: => B )( f: (A, => B) => B ): Stream[B] =
+    Stream.unfold( this ) {
+      case s: SCons[A] => Some( s.foldRight( z )( f ), s.t() )
+      case Empty => None
+    }
+
 }
 
 case object Empty extends Stream[Nothing]
