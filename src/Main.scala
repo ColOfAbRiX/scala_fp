@@ -213,6 +213,9 @@ object Main {
 
     val ex514 = intStream.startWith( Stream(1, 2) )
     println( "Ex. 5.14: " + ex514 )
+
+    val ex515 = intStream.tails
+    println( "Ex. 5.15: " + ex515 )
   }
 
 }
