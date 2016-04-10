@@ -14,7 +14,7 @@ case class SimpleRNG( seed: Long ) extends RNG {
     (n, nextRNG)
   }
 
-  def toStream( f: RNG => (Int, RNG) ): Stream[Int] =  Stream.unfold( this: RNG ) { s => Some( f( s ) ) }
+  def toStream[A]( f: RNG => (A, RNG) ): Stream[A] = Stream.unfold( this: RNG ) { s => Some( f( s ) ) }
 }
 
 object SimpleRNG {
@@ -27,6 +27,15 @@ object SimpleRNG {
   def nonNegativeInt( rng: RNG ): (Int, RNG) = {
     val (n, nextRng) = rng.nextInt
     (if( n == Int.MinValue ) 0 else Math.abs( n ), nextRng)
+  }
+
+  /* --- Exercise 6.2 --- *
+   * Write a function to generate a Double between 0 and 1, not including 1. Note: you can use Int.MaxValue
+   * to objain the maximum positive integer value, and you can use x.toDouble to convert an x: Int to a Double
+   */
+  def double( rng: RNG ): (Double, RNG) = {
+    val (n, nextRng) = nonNegativeInt( rng )
+    (n.toDouble / Int.MaxValue, nextRng)
   }
 
 }

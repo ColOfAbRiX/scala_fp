@@ -110,6 +110,7 @@ object Main {
     println( "Ex. 3.29b: " + ex329b )
 
     // --- Chapter 4 --- //
+    println()
 
     val someIntValue: Option[Int] = Some( 2 )
     val someListValue: List[Option[Int]] = List( Some( 2 ), Some( 1 ), Some( 4 ) )
@@ -145,7 +146,8 @@ object Main {
     println( "Ex. 4.7a: " + ex47a )
     println( "Ex. 4.7b: " + ex47b )
 
-    // --- Chapter 6 --- //
+    // --- Chapter 5 --- //
+    println()
 
     val intStream = Stream( 1, 2, 3, 4, 5 )
     val doubleStream = Stream( 6.0, 5.0, 4.0, 3.0, 2.0, 1.0 )
@@ -223,10 +225,15 @@ object Main {
     println( "Ex. 5.16: " + ex516 )
 
     // --- Chapter 6 --- //
+    println()
+
     val rng = new SimpleRNG( 42 )
 
     val ex61 = rng.toStream( SimpleRNG.nonNegativeInt )
     println( "Ex. 6.1: " + ex61.take( 5 ) )
+
+    val ex62 = rng.toStream( SimpleRNG.double )
+    println( "Ex. 6.2: " + ex62.take( 5 ) )
   }
 
 }
