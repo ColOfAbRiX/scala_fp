@@ -1,10 +1,10 @@
 /**
- * Functional Programming in Scala
- * P. Chiusano, R. Bjarnason
- * Manning Edition
- *
- * Exercises solved by Fabrizio Colonna
- */
+  * Functional Programming in Scala
+  * P. Chiusano, R. Bjarnason
+  * Manning Edition
+  *
+  * Exercises solved by Fabrizio Colonna
+  */
 
 import com.colofabrix.scala.fp_book._
 
@@ -110,6 +110,7 @@ object Main {
     println( "Ex. 3.29b: " + ex329b )
 
     // --- Chapter 4 --- //
+
     val someIntValue: Option[Int] = Some( 2 )
     val someListValue: List[Option[Int]] = List( Some( 2 ), Some( 1 ), Some( 4 ) )
     val noIntValue: Option[Int] = None
@@ -144,7 +145,8 @@ object Main {
     println( "Ex. 4.7a: " + ex47a )
     println( "Ex. 4.7b: " + ex47b )
 
-    // --- Chapter 5--- //
+    // --- Chapter 6 --- //
+
     val intStream = Stream( 1, 2, 3, 4, 5 )
     val doubleStream = Stream( 6.0, 5.0, 4.0, 3.0, 2.0, 1.0 )
 
@@ -211,7 +213,7 @@ object Main {
     println( "Ex. 5.13d: " + ex513d.take( 10 ) )
     println( "Ex. 5.13e: " + ex513e.take( 10 ) )
 
-    val ex514 = intStream.startWith( Stream(1, 2) )
+    val ex514 = intStream.startWith( Stream( 1, 2 ) )
     println( "Ex. 5.14: " + ex514 )
 
     val ex515 = intStream.tails
@@ -219,6 +221,12 @@ object Main {
 
     val ex516 = intStream.scanRight( 0 )( _ + _ )
     println( "Ex. 5.16: " + ex516 )
+
+    // --- Chapter 6 --- //
+    val rng = new SimpleRNG( 42 )
+
+    val ex61 = rng.toStream( SimpleRNG.nonNegativeInt )
+    println( "Ex. 6.1: " + ex61.take( 5 ) )
   }
 
 }
