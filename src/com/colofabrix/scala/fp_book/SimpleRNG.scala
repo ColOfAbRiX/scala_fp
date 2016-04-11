@@ -31,11 +31,36 @@ object SimpleRNG {
 
   /* --- Exercise 6.2 --- *
    * Write a function to generate a Double between 0 and 1, not including 1. Note: you can use Int.MaxValue
-   * to objain the maximum positive integer value, and you can use x.toDouble to convert an x: Int to a Double
+   * to obtain the maximum positive integer value, and you can use x.toDouble to convert an x: Int to a Double
    */
   def double( rng: RNG ): (Double, RNG) = {
     val (n, nextRng) = nonNegativeInt( rng )
     (n.toDouble / Int.MaxValue, nextRng)
   }
+
+  /* --- Exercise 6.3 --- *
+   * Write functions to generate an (Int, Double) pair, a (Double, Int) pair and a (Double, Double, Double) 3-tuple.
+   * You should be able to reuse the functions you've already written
+   */
+  def intDouble( rng: RNG ): ((Int, Double), RNG) = {
+    val (int1, nextRng1) = nonNegativeInt( rng )
+    val (double1, nextRng2) = double( nextRng1 )
+    ((int1, double1), nextRng2)
+  }
+
+  def doubleInt( rng: RNG ): ((Double, Int), RNG) = {
+    val (double1, nextRng1) = double( rng )
+    val (int1, nextRng2) = nonNegativeInt( nextRng1 )
+    ((double1, int1), nextRng2)
+  }
+
+
+  def double3( rng: RNG ): ((Double, Double, Double), RNG) = {
+    val (double1, nextRng1) = double( rng )
+    val (double2, nextRng2) = double( nextRng1 )
+    val (double3, nextRng3) = double( nextRng2 )
+    ((double1, double2, double3), nextRng3)
+  }
+
 
 }

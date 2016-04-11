@@ -234,6 +234,9 @@ object Main {
 
     val ex62 = rng.toStream( SimpleRNG.double )
     println( "Ex. 6.2: " + ex62.take( 5 ) )
+
+    val ex63 = rng.toStream( SimpleRNG.doubleInt )
+    println( "Ex. 6.3: " + ex63.take( 5 ) )
   }
 
 }
