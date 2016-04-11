@@ -54,7 +54,6 @@ object SimpleRNG {
     ((double1, int1), nextRng2)
   }
 
-
   def double3( rng: RNG ): ((Double, Double, Double), RNG) = {
     val (double1, nextRng1) = double( rng )
     val (double2, nextRng2) = double( nextRng1 )
@@ -62,5 +61,14 @@ object SimpleRNG {
     ((double1, double2, double3), nextRng3)
   }
 
+  /* --- Exercise 6.4 --- *
+   * Write a function to generate a list of random integers
+   */
+  def ints( count: Int )( rng: RNG ): (Seq[Int], RNG) = {
+    (0 until count).foldLeft( (Seq.empty[Int], rng) ) { (a, _) =>
+      val (n, nextRng) = a._2.nextInt
+      (n +: a._1, nextRng)
+    }
+  }
 
 }
