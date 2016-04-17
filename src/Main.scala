@@ -229,16 +229,16 @@ object Main {
 
     val rng = new SimpleRNG( 42 )
 
-    val ex61 = rng.toStream( SimpleRNG.nonNegativeInt )
-    println( "Ex. 6.1: " + ex61.take( 5 ) )
+    val ex61 = rng.nonNegativeInt
+    println( "Ex. 6.1: " + ex61._1 )
 
-    val ex62 = rng.toStream( SimpleRNG.double )
-    println( "Ex. 6.2: " + ex62.take( 5 ) )
+    val ex62 = rng.double
+    println( "Ex. 6.2: " + ex62._1 )
 
-    val ex63 = rng.toStream( SimpleRNG.doubleInt )
-    println( "Ex. 6.3: " + ex63.take( 5 ) )
+    val ex63 = rng.doubleInt
+    println( "Ex. 6.3: " + ex63._1 )
 
-    val ex64 = SimpleRNG.ints( 5 )( rng )._1
+    val ex64 = rng.ints( 5 )._1
     println( "Ex. 6.4: " + ex64 )
   }
 
