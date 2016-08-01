@@ -240,6 +240,9 @@ object Main {
 
     val ex64 = RNG.ints( 5 )( rng )._1
     println( "Ex. 6.4: " + ex64 )
+
+    val ex65 = RNG.toStream( rng )( RNG.double2 )
+    println( "Ex. 6.5: " + ex65.take( 5 ) )
   }
 
 }

@@ -79,4 +79,9 @@ object RNG {
       (n +: a._1, nextRng)
     }
   }
+
+  /* --- Exercise 6.5 --- *
+   * Use map to reimplement double in a more elegant way. See exercise 6.2
+   */
+  def double2: Rand[Double] = map(nonNegativeInt)( _.toDouble / Int.MaxValue )
 }
